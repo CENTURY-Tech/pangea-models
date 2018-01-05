@@ -6,6 +6,7 @@
     "test": "test"
   },
   "devDependencies": {
+    "@ctek/typed-utils": "^1.1.2",
     "@types/chai": "^3.5.1",
     "@types/es6-promise": "0.0.32",
     "@types/mocha": "^2.2.41",
@@ -37,8 +38,6 @@
   },
   "author": "Century Tech",
   "dependencies": {
-    "@types/joi": "^13.0.4",
-    "assert": "^1.4.1",
-    "joi": "^13.0.2"
+    "z-schema": "^3.19.0"
   }
 }

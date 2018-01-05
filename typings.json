@@ -1,0 +1,6 @@
+{
+  "globalDependencies": {
+    "sinon": "registry:dt/sinon#1.16.1+20161208163514",
+    "z-schema": "file:./node_modules/@ctek/typed-utils/.build/z-schema.d.ts"
+  }
+}

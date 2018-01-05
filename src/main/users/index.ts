@@ -1,3 +1,17 @@
+import * as ZSchema from "z-schema";
+
+export interface UserInterface {
+  username: string;
+  password?: string;
+  authToken: string;
+  email: string;
+  birthYear: string;
+}
+
+export interface ValidationError {
+  error: string;
+}
+
 const jsonSchema = {
   "type": "object",
   "properties": {
@@ -20,22 +34,41 @@ const jsonSchema = {
       "maximum": 2013
     },
     "email": {
-      "type": "string"
+      "type": "string",
+      "format": "email"
     }
   }
 };
 
-export class User {
+let validator: ZSchema;
 
-  constructor(data: any) {
+export class User implements UserInterface {
+
+  username: string;
+  password: string;
+  authToken: string;
+  email: string;
+  birthYear: string;
+
+  public constructor(data: any) {
+    validator = new ZSchema({ breakOnFirstError: false });
     Object.assign(this, data);
   }
 
-  getRawSchema() {
+  public validate() {
+    validator.validate(this, jsonSchema);
+  }
+
+  public getRawSchema() {
     return jsonSchema;
   }
 
-  showTestString(): string {
-    return "this is a test";
-  }
+  // private checkForPasswordAndAuthToken(): Promise<ValidationError | void> {
+  //   if (this.authToken && this.password) {
+  //     return Promise.resolve({
+  //       error: "Peer error: auth token and password not allowed in same user"
+  //     });
+  //   }
+  //   return Promise.resolve();
+  // }
 }
