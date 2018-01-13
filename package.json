@@ -38,6 +38,7 @@
   },
   "author": "Century Tech",
   "dependencies": {
+    "@types/z-schema": "^3.16.31",
     "z-schema": "^3.19.0"
   }
 }
