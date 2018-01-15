@@ -9,10 +9,10 @@
 export interface ValidationResult {
   errors: ZSchema.SchemaErrorDetail[];
   valid: boolean;
-  value: UserInterface.UserInterface;
+  value: Ctek..UserInterface;
 }
 
-export class UserBase implements UserInterface.UserInterface {
+export class UserBase implements Ctek.UserInterface {
 
   public validationOptions: ZSchema.Options = {
     breakOnFirstError: false,
@@ -43,7 +43,7 @@ export class UserBase implements UserInterface.UserInterface {
     return this.jsonSchema;
   }
 
-  public toJSON(): UserInterface.UserInterface {
+  public toJSON(): Ctek.UserInterface {
     return {
       username: this.username,
       email: this.email,
@@ -51,7 +51,7 @@ export class UserBase implements UserInterface.UserInterface {
     };
   }
 
-  private customValidation(report: any, schema: any, json: UserInterface.UserInterface) {
+  private customValidation(report: any, schema: any, json: Ctek.UserInterface) {
     if (json && typeof json === "object") {
       this.checkAuthTokenPasswordPeers(report, schema, json);
       this.checkForAuthTokenOrPassword(report, schema, json);
