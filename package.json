@@ -26,6 +26,8 @@
     "lint-ts": "tslint -c ./tslint.json './src/main/**/*.ts' --fix",
     "install:typings": "rm -rf typings && typings i"
   },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "Century Tech",
   "dependencies": {
     "@types/z-schema": "^3.16.31",
