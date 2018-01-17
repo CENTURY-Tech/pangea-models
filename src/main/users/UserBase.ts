@@ -1,48 +1,10 @@
-export interface UserInterface {
-  username: string;
-  password?: string;
-  authToken?: string;
-  email: string;
-  birthYear: string;
-}
-
 export interface ValidationResult {
   errors: ZSchema.SchemaErrorDetail[];
   valid: boolean;
-  value: UserInterface;
+  value: Ctek.UserInterface;
 }
 
-const jsonSchema = {
-  "type": "object",
-  "id": "user",
-  "properties": {
-    "_id": {
-      "type": "string"
-    },
-    "username": {
-      "type": "string"
-    },
-    "password": {
-      "type": "string",
-      "pattern": "^[a-zA-Z0-9]{3,30}$"
-    },
-    "authToken": {
-      "type": ["string", "integer"]
-    },
-    "birthYear": {
-      "type": "integer",
-      "minimum": 1900,
-      "maximum": 2013
-    },
-    "email": {
-      "type": "string",
-      "format": "email"
-    }
-  },
-  "required": ["username", "email", "birthYear"]
-};
-
-export class UserBase implements UserInterface {
+export class UserBase implements Ctek.UserInterface {
 
   public validationOptions: ZSchema.Options = {
     breakOnFirstError: false,
@@ -53,7 +15,9 @@ export class UserBase implements UserInterface {
   public password: string;
   public authToken: string;
   public email: string;
-  public birthYear: string;
+  public birthYear: number;
+
+  protected jsonSchema: any;
 
   public constructor(data: any) {
     Object.assign(this, data);
@@ -61,17 +25,17 @@ export class UserBase implements UserInterface {
 
   public validate(): Promise<ValidationResult> {
     return Promise.resolve({
-      valid: this.validator.validate(this, jsonSchema),
+      valid: this.validator.validate(this, this.jsonSchema),
       errors: this.validator.getLastErrors(),
       value: this.toJSON()
     });
   }
 
   public getRawSchema() {
-    return jsonSchema;
+    return this.jsonSchema;
   }
 
-  public toJSON(): UserInterface {
+  public toJSON(): Ctek.UserInterface {
     return {
       username: this.username,
       email: this.email,
@@ -79,7 +43,7 @@ export class UserBase implements UserInterface {
     };
   }
 
-  private customValidation(report: any, schema: any, json: UserInterface) {
+  private customValidation(report: any, schema: any, json: Ctek.UserInterface) {
     if (json && typeof json === "object") {
       this.checkAuthTokenPasswordPeers(report, schema, json);
       this.checkForAuthTokenOrPassword(report, schema, json);

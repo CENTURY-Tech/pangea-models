@@ -1,6 +1,10 @@
 {
   "globalDependencies": {
     "sinon": "registry:dt/sinon#1.16.1+20161208163514",
-    "z-schema": "file:./node_modules/@ctek/typed-utils/.build/z-schema.d.ts"
+    "user-interface": "file:./node_modules/pangea-json-schemas/dist/models/UserInterface.d.ts",
+    "z-schema": "file:./src/typings/z-schema.d.ts"
+  },
+  "dependencies": {
+    "pangea-json-schemas": "file:./node_modules/pangea-json-schemas/dist/index.d.ts"
   }
 }

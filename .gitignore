@@ -128,11 +128,3 @@ Temporary Items
 /release
 /test
 /*.d.ts
-!index.html
-
-styles.css
-dist
-package-lock.json
-/dist
-/docs
-local.wct.conf.*
