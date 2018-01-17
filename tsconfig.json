@@ -15,7 +15,7 @@
     ]
   },
   "include": [
-    "src",
+    "src/main",
     "typings"
   ],
   "exclude": [

@@ -1,15 +1,7 @@
-// export interface UserInterface {
-//   username: string;
-//   password?: string;
-//   authToken?: string;
-//   email: string;
-//   birthYear: string;
-// }
-
 export interface ValidationResult {
   errors: ZSchema.SchemaErrorDetail[];
   valid: boolean;
-  value: Ctek..UserInterface;
+  value: Ctek.UserInterface;
 }
 
 export class UserBase implements Ctek.UserInterface {
