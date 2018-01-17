@@ -14,7 +14,6 @@
     "@types/sinon": "^1.16.35",
     "cpy-cli": "^1.0.1",
     "moment": "^2.18.1",
-    "pangea-json-schema": "git+https://git@github.com:CENTURY-Tech/pangea-json-schemas.git",
     "ramda": "^0.24.1",
     "typedoc": "^0.8.0",
     "typescript": "2.3.4",
