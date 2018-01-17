@@ -13,14 +13,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var pangea_json_schemas_1 = require("pangea-json-schemas");
 var ZSchema = require("z-schema");
 var UserBase_1 = require("./UserBase");
-var User = (function (_super) {
-    __extends(User, _super);
-    function User(data) {
+var UserModel = (function (_super) {
+    __extends(UserModel, _super);
+    function UserModel(data) {
         var _this = _super.call(this, data) || this;
-        _this.jsonSchema = pangea_json_schemas_1.PangeaJSONSchemas.GetSchema("models/UserInterface.json");
+        _this.jsonSchema = JSON.parse(pangea_json_schemas_1.PangeaJSONSchemas.GetSchema("models/UserInterface.json").toString());
         _this.validator = new ZSchema(_this.validationOptions);
         return _this;
     }
-    return User;
+    return UserModel;
 }(UserBase_1.UserBase));
-exports.User = User;
+exports.UserModel = UserModel;
